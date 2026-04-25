@@ -4,6 +4,7 @@ foundryconfig.json
 .DS_Store
 .env
 module.zip
+module.json
 package-lock.json
 build/
 vite.local.ts
