@@ -1,6 +1,6 @@
 {
   "name": "yugen-tracker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A sheet tracking module with Discord Integration for maintaining campaign integrity.",
   "main": "index.js",
   "type": "module",
