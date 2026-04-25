@@ -1,0 +1,30 @@
+{
+  "id": "yugen-tracker",
+  "name": "yugen-tracker",
+  "title": "yugen-tracker",
+  "description": "A multi-system sheet tracker for Foundry VTT, verified for dnd5e, pf2e, wfrp4e, and coc7e.",
+  "version": "1.0.1",
+  "authors": [
+    {
+      "name": "yugen"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "esmodules": [
+    "scripts/module.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "url": "https://github.com/yugenvtt/yugen-tracker",
+  "manifest": "https://raw.github.com/yugenvtt/yugen-tracker/blob/main/static/module.json",
+  "download": "https://github.com/yugenvtt/yugen-tracker/releases/download/1.0.1/module.zip",
+  "license": "LICENSE"
+}
