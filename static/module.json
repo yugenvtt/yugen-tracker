@@ -24,7 +24,7 @@
     }
   ],
   "url": "https://github.com/yugenvtt/yugen-tracker",
-  "manifest": "https://raw.github.com/yugenvtt/yugen-tracker/blob/main/static/module.json",
+  "manifest": "https://raw.githubusercontent.com/yugenvtt/yugen-tracker/refs/heads/main/static/module.json",
   "download": "https://github.com/yugenvtt/yugen-tracker/releases/download/1.0.1/module.zip",
   "license": "LICENSE"
 }
