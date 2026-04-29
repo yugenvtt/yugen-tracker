@@ -1,7 +1,13 @@
 # yugen-tracker
-_A Foundry VTT sheet tracking module with Discord Integration for maintaining campaign integrity._
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=HaS7BjKM3xY">
+    <img src="https://img.youtube.com/vi/HaS7BjKM3xY/maxresdefault.jpg" width="100%" alt="Watch the demo">
+  </a>
+  <br>
+  <a href="https://www.youtube.com/watch?v=HaS7BjKM3xY">Click here for video demonstration</a>
+</p>
 
-![currency](.github/assets/currency.png)
+_A Foundry VTT sheet tracking module with Discord Integration for maintaining campaign integrity._
 
 ---
 
