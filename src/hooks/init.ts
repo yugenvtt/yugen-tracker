@@ -8,6 +8,9 @@ import { update_actor_hook } from './update-actor.js';
 import { item_hooks } from './item-hooks.js';
 import { active_effect_hooks } from './active-effect-hooks.js';
 import { socket_hooks } from './socket-hooks.js';
+import { render_chat_log_hook } from './render-chat-log.js';
+import { get_scene_control_buttons_hook } from './get-scene-control-buttons.js';
+import { render_journal_directory_hook } from './render-journal-directory.js';
 
 export const init_hook = ( ) => 
 {
@@ -21,6 +24,9 @@ export const init_hook = ( ) =>
 		item_hooks( );
 		active_effect_hooks( );
 		socket_hooks( );
+		render_chat_log_hook( );
+		get_scene_control_buttons_hook( );
+		render_journal_directory_hook( );
 
 		new YugenTracker( );
 	} );
@@ -103,6 +109,39 @@ const register_settings = ( ) =>
 		config: true,
 		type: String,
 		default: 'yugen-tracker-logs.txt'
+	} );
+
+	/** register settings for allowing players to view the log history **/
+	( game as any ).settings.register( 'yugen-tracker', 'allow-player-log-viewer', 
+	{
+		name: 'yugen-tracker.settings.allow-player-log-viewer.name',
+		hint: 'yugen-tracker.settings.allow-player-log-viewer.hint',
+		scope: 'world',
+		config: true,
+		type: Boolean,
+		default: false
+	} );
+
+	/** register settings for debug logging **/
+	( game as any ).settings.register( 'yugen-tracker', 'debug-mode', 
+	{
+		name: 'yugen-tracker.settings.debug-mode.name',
+		hint: 'yugen-tracker.settings.debug-mode.hint',
+		scope: 'world',
+		config: true,
+		type: Boolean,
+		default: false
+	} );
+
+	/** register settings for sidebar button visibility **/
+	( game as any ).settings.register( 'yugen-tracker', 'show-sidebar-button', 
+	{
+		name: 'yugen-tracker.settings.show-sidebar-button.name',
+		hint: 'yugen-tracker.settings.show-sidebar-button.hint',
+		scope: 'world',
+		config: true,
+		type: Boolean,
+		default: true
 	} );
 
 	/** register settings for discord integration **/

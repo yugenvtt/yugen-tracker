@@ -30,6 +30,13 @@ export class ActorHandler extends BaseHandler
 			return;
 		}
 
+		const is_debug = ( game as any ).settings.get( 'yugen-tracker', 'debug-mode' );
+
+		if ( is_debug ) 
+		{
+			console.log( `yugen-tracker | handling update for ${ actor.name }`, change );
+		}
+
 		if ( !change.system ) 
 		{
 			return;

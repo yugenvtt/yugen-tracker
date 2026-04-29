@@ -3,6 +3,8 @@
  * centralizes delivery of messages to chat, discord, and sockets.
  **/
 
+import { SocketHandler } from './socket-handler.js';
+
 export class ChatManager 
 {
 	private static socket_name = 'module.yugen-tracker';
@@ -65,14 +67,39 @@ export class ChatManager
 	{
 		/** check if file logging is enabled before emitting to gm socket **/
 		const output_to_file = ( game as any ).settings.get( 'yugen-tracker', 'output-to-file' );
+		const is_debug = ( game as any ).settings.get( 'yugen-tracker', 'debug-mode' );
+
+		if ( is_debug ) 
+		{
+			console.log( `yugen-tracker | trigger_secondary_outputs: output_to_file=${ output_to_file }` );
+		}
 
 		if ( output_to_file ) 
 		{
+			if ( is_debug ) 
+			{
+				console.log( 'yugen-tracker | emitting log-to-file socket event' );
+			}
+
+			/** strip html tags and extract user if possible for structured logging **/
+			const div = document.createElement( 'div' );
+			div.innerHTML = content;
+			const text_content = div.textContent || div.innerText || '';
+			
+			const user_match = content.match( /^<strong>(.*?)<\/strong>/ );
+			const user = user_match ? user_match[ 1 ] : 'System';
+			const message = text_content.replace( user, '' ).replace( /^[:\s]+/, '' );
+
 			/** emit a socket event to coordinate file writing on the gm's client **/
-			( game as any ).socket.emit( this.socket_name, 
+			void SocketHandler.emit( 
 			{
 				type: 'log-to-file',
-				content: `[ ${ new Date( ).toISOString( ) } ] ${ content }`
+				content: JSON.stringify( 
+				{
+					t: new Date( ).toISOString( ),
+					u: user,
+					m: message
+				} )
 			} );
 		}
 

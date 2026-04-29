@@ -29,6 +29,18 @@
 				"name": "Log File Name",
 				"hint": "The name of the log file (e.g., combat-log.txt)."
 			},
+			"allow-player-log-viewer": {
+				"name": "Allow Player Log Viewer",
+				"hint": "If enabled, players will be able to open the log history viewer."
+			},
+			"debug-mode": {
+				"name": "Debug Mode",
+				"hint": "If enabled, detailed technical logs will be printed to the browser console."
+			},
+			"show-sidebar-button": {
+				"name": "Show Sidebar Button",
+				"hint": "If enabled, the Log History button will appear in the Journal Notes sidebar and Directory header. If disabled, you must use a macro to open the UI."
+			},
 			"discord-webhook": {
 				"name": "Discord Webhook",
 				"hint": "Enter a Discord Webhook URL to send logs to a Discord channel. Leave empty to disable."
@@ -81,6 +93,12 @@
 				"currency": "currency: ",
 				"race": "race"
 			}
+		},
+		"log-viewer": {
+			"title": "yugen-tracker: Log History",
+			"refresh": "Refresh Logs",
+			"clear": "Clear History",
+			"logging-disabled-warn": "Output to File is currently disabled. Historical logs will not be updated."
 		}
 	}
 }
