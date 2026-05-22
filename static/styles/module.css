@@ -1,0 +1,89 @@
+/**
+ * @file static/styles/module.css
+ * styles for the yugen-tracker module.
+ **/
+
+#yugen-tracker-log-viewer {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	user-select: text;
+}
+
+.yugen-tracker-log-viewer-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 8px;
+	gap: 10px;
+}
+
+.yugen-tracker-log-viewer-controls {
+	display: flex;
+	gap: 5px;
+	flex: 0 0 auto;
+}
+
+.yugen-tracker-log-viewer-controls button {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	height: 32px;
+}
+
+.yugen-tracker-log-viewer-content {
+	flex: 1;
+	overflow-y: auto;
+	background: rgba( 0, 0, 0, 0.05 );
+	border: 1px solid #7a7971;
+	border-radius: 4px;
+}
+
+.yugen-tracker-log-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-family: 'Signika', sans-serif;
+	font-size: 13px;
+}
+
+.yugen-tracker-log-entry {
+	padding: 6px 8px;
+	border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+}
+
+.yugen-tracker-log-entry:nth-child( even ) {
+	background: rgba( 0, 0, 0, 0.03 );
+}
+
+.yugen-tracker-log-entry:last-child {
+	border-bottom: none;
+}
+
+.yugen-tracker-log-time {
+	flex: 0 0 140px;
+	font-family: monospace;
+	font-size: 11px;
+	color: #666;
+}
+
+.yugen-tracker-log-user {
+	flex: 0 0 100px;
+	font-weight: bold;
+	color: #4b4a44;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.yugen-tracker-log-message {
+	flex: 1;
+	white-space: pre-wrap;
+	word-break: break-word;
+	line-height: 1.4;
+}

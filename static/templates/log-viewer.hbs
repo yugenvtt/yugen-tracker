@@ -1,0 +1,23 @@
+<div class="yugen-tracker-log-viewer-container">
+	<div class="yugen-tracker-log-viewer-controls">
+		<button type="button" data-action="refresh">
+			<i class="fas fa-sync"></i> {{localize "yugen-tracker.log-viewer.refresh"}}
+		</button>
+		{{#if is_gm}}
+		<button type="button" data-action="clear">
+			<i class="fas fa-trash"></i> {{localize "yugen-tracker.log-viewer.clear"}}
+		</button>
+		{{/if}}
+	</div>
+	<div class="yugen-tracker-log-viewer-content">
+		<ul class="yugen-tracker-log-list">
+			{{#each logs}}
+			<li class="yugen-tracker-log-entry">
+				<span class="yugen-tracker-log-time">{{this.t}}</span>
+				<span class="yugen-tracker-log-user">{{this.u}}</span>
+				<span class="yugen-tracker-log-message">{{this.m}}</span>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>

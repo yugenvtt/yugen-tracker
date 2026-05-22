@@ -30,5 +30,14 @@
   "manifest": "https://raw.githubusercontent.com/yugenvtt/yugen-tracker/refs/heads/main/static/module.json",
   "download": "https://github.com/yugenvtt/yugen-tracker/releases/download/1.0.2/module.zip",
   "license": "LICENSE",
+  "relationships": {
+    "requires": [
+      {
+        "id": "yugen-utils",
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/yugenvtt/yugen-utils/refs/heads/main/static/module.json"
+      }
+    ]
+  },
   "socket": true
 }

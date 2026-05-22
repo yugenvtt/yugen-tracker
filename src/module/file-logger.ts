@@ -22,8 +22,8 @@ export class FileLogger
 			console.log( `yugen-tracker | FileLogger.process_log called: ${ text.substring( 0, 50 ) }...` );
 		}
 
-		/** determine if the current user is the primary active gamemaster **/
-		const is_primary_gm = ( game as any ).user.id === ( game as any ).users.find( ( u: any ) => u.isGM && u.active )?.id;
+		/** check if current client is primary gm **/
+		const is_primary_gm = ( globalThis as any ).yugen_utils.is_primary_gm( );
 
 		if ( !is_primary_gm ) 
 		{
@@ -87,8 +87,8 @@ export class FileLogger
 	 **/
 	public static async clear_logs( ): Promise<void> 
 	{
-		/** determine if the current user is the primary active gamemaster **/
-		const is_primary_gm = ( game as any ).user.id === ( game as any ).users.find( ( u: any ) => u.isGM && u.active )?.id;
+		/** check if current client is primary gm **/
+		const is_primary_gm = ( globalThis as any ).yugen_utils.is_primary_gm( );
 
 		if ( !is_primary_gm ) 
 		{
