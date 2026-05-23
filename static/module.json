@@ -3,7 +3,7 @@
   "name": "yugen-tracker",
   "title": "yugen-tracker",
   "description": "A multi-system sheet tracker for Foundry VTT, verified for dnd5e, pf2e, wfrp4e, and coc7e.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": [
     {
       "name": "yugen."
