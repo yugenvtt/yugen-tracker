@@ -98,7 +98,50 @@
 			"title": "yugen-tracker: Log History",
 			"refresh": "Refresh Logs",
 			"clear": "Clear History",
-			"logging-disabled-warn": "Output to File is currently disabled. Historical logs will not be updated."
+			"logging-disabled-warn": "Output to File is currently disabled. Historical logs will not be updated.",
+			"search-placeholder": "Search logs...",
+			"snapshot-all": "Snapshot All",
+			"tabs": {
+				"all": "All",
+				"spells": "Spells",
+				"inventory": "Inventory",
+				"attributes": "Attributes",
+				"concentration": "Concentration"
+			}
+		},
+		"snapshot": {
+			"title": "yugen-tracker: Sheet Snapshot",
+			"header-btn": "Snapshot",
+			"taken-at": "Snapshot taken at",
+			"no-snapshot": "No baseline snapshot has been taken for this character.",
+			"create-btn": "Take Snapshot",
+			"rollback-all-btn": "Revert All Changes",
+			"no-changes": "This sheet matches the snapshot perfectly.",
+			"no-characters": "No player characters found to snapshot.",
+			"all-created-success": "Taken sheet baseline snapshots for {count} characters.",
+			"table": {
+				"property": "Property",
+				"snapshot": "Snapshot",
+				"current": "Current State",
+				"action": "Revert"
+			},
+			"states": {
+				"non-existent": "Non-existent",
+				"created": "Created",
+				"yes": "Yes",
+				"no": "No",
+				"existed": "Existed",
+				"deleted": "Deleted"
+			},
+			"diff-labels": {
+				"hp": "Hit Points",
+				"ability": "Ability: {ability}"
+			},
+			"item-prop-labels": {
+				"quantity": "Quantity",
+				"equipped": "Equipped Status",
+				"prepared": "Prepared Status"
+			}
 		}
 	}
 }

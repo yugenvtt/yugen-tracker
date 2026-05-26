@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/naming-convention */
 /**
  * @file src/module/log-viewer.ts
  * provides a user interface for viewing and managing the log history.
@@ -73,6 +74,7 @@ export class LogViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 		actions: 
 		{
 			refresh: LogViewer.prototype._on_refresh,
+			'snapshot-all': LogViewer.prototype._on_snapshot_all,
 			clear: LogViewer.prototype._on_clear
 		}
 	};
@@ -86,11 +88,81 @@ export class LogViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 	};
 
 	/**
+	 * binds event listeners for search and tab clicks when the layout renders.
+	 **/
+	override _onRender( context: any, options: any ): void 
+	{
+		super._onRender( context, options );
+		
+		const html = this.element;
+		const search_input = html.querySelector( '.yugen-tracker-search-input' ) as HTMLInputElement;
+		const tabs = html.querySelectorAll( '.yugen-tracker-tab' );
+		const log_entries = html.querySelectorAll( '.yugen-tracker-log-entry' );
+
+		let active_tab = 'all';
+		let search_query = '';
+
+		const filter_logs = ( ) => 
+		{
+			for ( const entry of log_entries ) 
+			{
+				const html_entry = entry as HTMLElement;
+				const category = html_entry.dataset.category || '';
+				const text = html_entry.textContent?.toLowerCase( ) || '';
+
+				const matches_tab = active_tab === 'all' || category === active_tab;
+				const matches_search = search_query === '' || text.includes( search_query );
+
+				if ( matches_tab && matches_search ) 
+				{
+					html_entry.classList.remove( 'is-hidden' );
+				}
+				else 
+				{
+					html_entry.classList.add( 'is-hidden' );
+				}
+			}
+		};
+
+		if ( search_input ) 
+		{
+			search_input.addEventListener( 'input', ( event ) => 
+			{
+				search_query = ( event.target as HTMLInputElement ).value.toLowerCase( ).trim( );
+				filter_logs( );
+			} );
+		}
+
+		for ( const tab of tabs ) 
+		{
+			tab.addEventListener( 'click', ( event ) => 
+			{
+				event.preventDefault( );
+				
+				for ( const t of tabs ) 
+				{
+					t.classList.remove( 'active' );
+				}
+
+				const target_tab = tab as HTMLElement;
+				target_tab.classList.add( 'active' );
+				active_tab = target_tab.dataset.tab || 'all';
+
+				filter_logs( );
+			} );
+		}
+	}
+
+	/**
 	 * prepares data for the handlebars template
 	 **/
 	override async _prepareContext( _options: any ): Promise<any> 
 	{
-		const lines = this._logs.split( '\n' ).filter( ( l: string ) => l.trim( ) !== '' );
+		const lines = this._logs.split( '\n' ).filter( ( l: string ) => 
+		{
+			return l.trim( ) !== '';
+		} );
+		
 		const parsed = lines.map( ( line: string ) => 
 		{
 			try 
@@ -99,12 +171,31 @@ export class LogViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 				/** format timestamp for local display **/
 				const date = new Date( data.t );
 				data.t = `${ date.toLocaleDateString( ) } ${ date.toLocaleTimeString( ) }`;
+				
+				/** determine log category **/
+				const msg = data.m.toLowerCase( );
+				let category = 'attributes';
+				
+				if ( msg.includes( 'concentrat' ) ) 
+				{
+					category = 'concentration';
+				}
+				else if ( msg.includes( 'spell' ) || msg.includes( 'slots' ) || msg.includes( 'pact' ) ) 
+				{
+					category = 'spells';
+				}
+				else if ( msg.includes( 'item' ) || msg.includes( 'equipped' ) || msg.includes( 'unequipped' ) || msg.includes( 'charges' ) || msg.includes( 'prepared' ) || msg.includes( 'unprepared' ) ) 
+				{
+					category = 'inventory';
+				}
+
+				data.category = category;
 				return data;
 			}
 			catch ( e ) 
 			{
 				/** fallback for legacy non-json logs **/
-				return { t: '', u: 'Legacy', m: line };
+				return { t: '', u: 'Legacy', m: line, category: 'attributes' };
 			}
 		} );
 
@@ -121,6 +212,22 @@ export class LogViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 	{
 		event.preventDefault( );
 		void this._request_logs( );
+	}
+
+	/**
+	 * handles the snapshot-all action to snapshot all active characters
+	 **/
+	private async _on_snapshot_all( event: Event, _target: HTMLElement ): Promise<void> 
+	{
+		event.preventDefault( );
+
+		if ( !( game as any ).user.isGM ) 
+		{
+			return;
+		}
+
+		const { SnapshotHandler } = await import( './snapshot-handler.js' );
+		await SnapshotHandler.snapshot_all_characters( );
 	}
 
 	/**

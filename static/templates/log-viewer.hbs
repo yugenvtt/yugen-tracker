@@ -4,15 +4,42 @@
 			<i class="fas fa-sync"></i> {{localize "yugen-tracker.log-viewer.refresh"}}
 		</button>
 		{{#if is_gm}}
+		<button type="button" data-action="snapshot-all">
+			<i class="fas fa-camera"></i> {{localize "yugen-tracker.snapshot.create-btn"}}
+		</button>
 		<button type="button" data-action="clear">
 			<i class="fas fa-trash"></i> {{localize "yugen-tracker.log-viewer.clear"}}
 		</button>
 		{{/if}}
 	</div>
+
+	<div class="yugen-tracker-search-bar">
+		<i class="fas fa-search"></i>
+		<input type="text" class="yugen-tracker-search-input" placeholder="{{localize "yugen-tracker.log-viewer.search-placeholder"}}" />
+	</div>
+
+	<div class="yugen-tracker-category-tabs">
+		<button type="button" class="yugen-tracker-tab active" data-tab="all">
+			{{localize "yugen-tracker.log-viewer.tabs.all"}}
+		</button>
+		<button type="button" class="yugen-tracker-tab" data-tab="spells">
+			{{localize "yugen-tracker.log-viewer.tabs.spells"}}
+		</button>
+		<button type="button" class="yugen-tracker-tab" data-tab="inventory">
+			{{localize "yugen-tracker.log-viewer.tabs.inventory"}}
+		</button>
+		<button type="button" class="yugen-tracker-tab" data-tab="attributes">
+			{{localize "yugen-tracker.log-viewer.tabs.attributes"}}
+		</button>
+		<button type="button" class="yugen-tracker-tab" data-tab="concentration">
+			{{localize "yugen-tracker.log-viewer.tabs.concentration"}}
+		</button>
+	</div>
+
 	<div class="yugen-tracker-log-viewer-content">
 		<ul class="yugen-tracker-log-list">
 			{{#each logs}}
-			<li class="yugen-tracker-log-entry">
+			<li class="yugen-tracker-log-entry" data-category="{{this.category}}">
 				<span class="yugen-tracker-log-time">{{this.t}}</span>
 				<span class="yugen-tracker-log-user">{{this.u}}</span>
 				<span class="yugen-tracker-log-message">{{this.m}}</span>

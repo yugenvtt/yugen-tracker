@@ -11,6 +11,7 @@ import { socket_hooks } from './socket-hooks.js';
 import { render_chat_log_hook } from './render-chat-log.js';
 import { get_scene_control_buttons_hook } from './get-scene-control-buttons.js';
 import { render_journal_directory_hook } from './render-journal-directory.js';
+import { get_actor_sheet_header_buttons_hook } from './get-actor-sheet-header-buttons.js';
 
 export const init_hook = ( ) => 
 {
@@ -27,6 +28,7 @@ export const init_hook = ( ) =>
 		render_chat_log_hook( );
 		get_scene_control_buttons_hook( );
 		render_journal_directory_hook( );
+		get_actor_sheet_header_buttons_hook( );
 
 		new YugenTracker( );
 	} );
