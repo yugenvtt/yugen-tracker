@@ -10,7 +10,10 @@ export const get_scene_control_buttons_hook = ( ) =>
 	/** listen for the scene controls construction to inject the log history tool **/
 	Hooks.on( 'getSceneControlButtons', ( controls: any ) =>
 	{
+		/** retrieve settings value **/
 		const show_button = ( game as any ).settings.get( 'yugen-tracker', 'show-sidebar-button' );
+
+		/** retrieve settings value **/
 		const allow_players = ( game as any ).settings.get( 'yugen-tracker', 'allow-player-log-viewer' );
 
 		if ( !show_button ) 
@@ -19,16 +22,6 @@ export const get_scene_control_buttons_hook = ( ) =>
 		}
 
 		if ( !( game as any ).user.isGM && !allow_players )
-		{
-			return;
-		}
-
-		/** in foundry v14+, controls is an object keyed by layer name rather than an array **/
-		const notes_controls = Array.isArray( controls )
-			? controls.find( ( c: any ) => c.name === 'notes' )
-			: controls[ 'notes' ];
-
-		if ( !notes_controls )
 		{
 			return;
 		}
@@ -47,14 +40,7 @@ export const get_scene_control_buttons_hook = ( ) =>
 			button: true
 		};
 
-		/** in v14, tools is also an object keyed by tool name rather than an array **/
-		if ( Array.isArray( notes_controls.tools ) )
-		{
-			notes_controls.tools.push( tool );
-		}
-		else
-		{
-			notes_controls.tools[ tool.name ] = tool;
-		}
+		/** register log viewer tool button via shared library control utility **/
+		( globalThis as any ).yugen_utils.register_control_tool( controls, 'notes', tool );
 	} );
 };
