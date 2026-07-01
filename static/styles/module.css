@@ -3,309 +3,380 @@
  * styles for the yugen-tracker module.
  **/
 
-#yugen-tracker-log-viewer {
+#yugen-tracker-log-viewer
+{
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	user-select: text;
 }
 
-.yugen-tracker-log-viewer-container {
+.yugen-tracker-log-viewer-container
+{
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	padding: 8px;
-	gap: 10px;
+	padding: 16px;
+	gap: 12px;
 }
 
-.yugen-tracker-log-viewer-controls {
+.yugen-tracker-log-viewer-controls
+{
 	display: flex;
-	gap: 5px;
+	gap: 8px;
 	flex: 0 0 auto;
 }
 
-.yugen-tracker-log-viewer-controls button {
+.yugen-tracker-log-viewer-controls button
+{
 	flex: 1;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: 5px;
-	height: 32px;
+	gap: 6px;
+	height: 36px;
 }
 
-.yugen-tracker-log-viewer-content {
+.yugen-tracker-log-viewer-content
+{
 	flex: 1;
 	overflow-y: auto;
-	background: rgba( 0, 0, 0, 0.05 );
-	border: 1px solid #7a7971;
-	border-radius: 4px;
+	background: rgba( 0, 0, 0, 0.25 );
+	border: 1px solid var( --yugen-border-color );
+	border-radius: var( --yugen-border-radius-md );
 }
 
-.yugen-tracker-log-list {
+.yugen-tracker-log-list
+{
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	font-family: 'Signika', sans-serif;
+	font-family: var( --yugen-font-family );
 	font-size: 13px;
 }
 
-.yugen-tracker-log-entry {
-	padding: 6px 8px;
-	border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
+.yugen-tracker-log-entry
+{
+	padding: 8px 12px;
+	border-bottom: 1px solid var( --yugen-border-color );
 	display: flex;
-	gap: 10px;
+	gap: 12px;
 	align-items: flex-start;
+	transition: background 0.2s ease;
 }
 
-.yugen-tracker-log-entry:nth-child( even ) {
-	background: rgba( 0, 0, 0, 0.03 );
+.yugen-tracker-log-entry:hover
+{
+	background: rgba( 255, 255, 255, 0.02 );
 }
 
-.yugen-tracker-log-entry:last-child {
+.yugen-tracker-log-entry:nth-child( even )
+{
+	background: rgba( 255, 255, 255, 0.01 );
+}
+
+.yugen-tracker-log-entry:nth-child( even ):hover
+{
+	background: rgba( 255, 255, 255, 0.02 );
+}
+
+.yugen-tracker-log-entry:last-child
+{
 	border-bottom: none;
 }
 
-.yugen-tracker-log-time {
+.yugen-tracker-log-time
+{
 	flex: 0 0 140px;
 	font-family: monospace;
 	font-size: 11px;
-	color: #666;
+	color: var( --yugen-text-muted );
+	padding-top: 1px;
 }
 
-.yugen-tracker-log-user {
+.yugen-tracker-log-user
+{
 	flex: 0 0 100px;
-	font-weight: bold;
-	color: #4b4a44;
+	font-weight: 700;
+	color: var( --yugen-accent );
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
-.yugen-tracker-log-message {
+.yugen-tracker-log-message
+{
 	flex: 1;
 	white-space: pre-wrap;
 	word-break: break-word;
 	line-height: 1.4;
+	color: var( --yugen-text-primary );
 }
 
 /* Search bar styling */
-.yugen-tracker-search-bar {
+.yugen-tracker-search-bar
+{
 	display: flex;
 	align-items: center;
-	background: rgba( 0, 0, 0, 0.05 );
-	border: 1px solid #7a7971;
-	border-radius: 4px;
-	padding: 4px 8px;
-	gap: 6px;
+	background: rgba( 0, 0, 0, 0.25 );
+	border: 1px solid var( --yugen-border-color );
+	border-radius: var( --yugen-border-radius-sm );
+	padding: 8px 12px;
+	gap: 8px;
 	flex: 0 0 auto;
 }
 
-.yugen-tracker-search-bar i {
-	color: #7a7971;
+.yugen-tracker-search-bar i
+{
+	color: var( --yugen-text-muted );
 }
 
-.yugen-tracker-search-input {
-	background: transparent;
-	border: none;
-	color: inherit;
-	font-family: inherit;
-	font-size: 13px;
-	width: 100%;
-	padding: 0;
+.yugen-tracker-search-input
+{
+	background: transparent !important;
+	border: none !important;
+	color: var( --yugen-text-primary ) !important;
+	font-family: var( --yugen-font-family ) !important;
+	font-size: 13px !important;
+	width: 100% !important;
+	padding: 0 !important;
+	height: auto !important;
 }
 
-.yugen-tracker-search-input:focus {
-	outline: none;
-	box-shadow: none;
+.yugen-tracker-search-input:focus
+{
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 /* Category tabs styling */
-.yugen-tracker-category-tabs {
+.yugen-tracker-category-tabs
+{
 	display: flex;
-	gap: 4px;
+	gap: 6px;
 	flex-wrap: wrap;
 	flex: 0 0 auto;
 }
 
-.yugen-tracker-tab {
+.yugen-tracker-tab
+{
 	flex: 1;
 	min-width: 70px;
 	font-size: 11px;
-	padding: 4px 6px;
-	border: 1px solid #7a7971;
-	border-radius: 4px;
-	background: rgba( 0, 0, 0, 0.05 );
+	padding: 6px 10px;
+	border: 1px solid var( --yugen-border-color );
+	border-radius: var( --yugen-border-radius-sm );
+	background: rgba( 255, 255, 255, 0.02 );
+	color: var( --yugen-text-secondary );
 	cursor: pointer;
 	text-align: center;
-	transition: all 0.15s ease-in-out;
+	transition: all 0.2s ease;
+	font-family: var( --yugen-font-family );
+	font-weight: 500;
 }
 
-.yugen-tracker-tab:hover {
-	background: rgba( 0, 0, 0, 0.1 );
-	border-color: #4b4a44;
+.yugen-tracker-tab:hover
+{
+	background: rgba( 255, 255, 255, 0.05 );
+	border-color: var( --yugen-text-secondary );
+	color: var( --yugen-text-primary );
 }
 
-.yugen-tracker-tab.active {
-	background: #4b4a44;
-	color: #f7f3e9;
-	border-color: #4b4a44;
+.yugen-tracker-tab.active
+{
+	background: var( --yugen-accent );
+	color: #0f172a;
+	border-color: var( --yugen-accent );
+	font-weight: 700;
 }
 
 /* Hidden elements */
-.is-hidden {
+.is-hidden
+{
 	display: none !important;
 }
 
 /* Snapshot Viewer styling */
-.yugen-tracker-snapshot-container {
+.yugen-tracker-snapshot-container
+{
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	padding: 8px;
-	gap: 10px;
+	padding: 16px;
+	gap: 12px;
 }
 
-.yugen-tracker-snapshot-header {
+.yugen-tracker-snapshot-header
+{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 10px;
+	gap: 12px;
 	flex: 0 0 auto;
-	background: rgba( 0, 0, 0, 0.03 );
-	padding: 6px 8px;
-	border: 1px solid #7a7971;
-	border-radius: 4px;
+	background: rgba( 255, 255, 255, 0.02 );
+	padding: 10px 14px;
+	border: 1px solid var( --yugen-border-color );
+	border-radius: var( --yugen-border-radius-md );
 }
 
-.yugen-tracker-snapshot-time {
-	font-family: 'Signika', sans-serif;
+.yugen-tracker-snapshot-time
+{
+	font-family: var( --yugen-font-family );
 	font-size: 12px;
-	font-weight: bold;
-	color: #4b4a44;
+	font-weight: 700;
+	color: var( --yugen-text-primary );
 }
 
-.yugen-tracker-snapshot-actions {
+.yugen-tracker-snapshot-actions
+{
 	display: flex;
-	gap: 5px;
+	gap: 8px;
 }
 
-.yugen-tracker-snapshot-actions button {
-	display: flex;
+.yugen-tracker-snapshot-actions button
+{
+	display: inline-flex;
 	align-items: center;
-	gap: 4px;
-	padding: 4px 8px;
+	gap: 6px;
+	padding: 0 12px;
 	font-size: 11px;
-	height: 26px;
+	height: 28px;
 }
 
-.yugen-tracker-snapshot-body {
+.yugen-tracker-snapshot-body
+{
 	flex: 1;
 	overflow-y: auto;
-	border: 1px solid #7a7971;
-	border-radius: 4px;
-	background: rgba( 0, 0, 0, 0.05 );
+	border: 1px solid var( --yugen-border-color );
+	border-radius: var( --yugen-border-radius-md );
+	background: rgba( 0, 0, 0, 0.25 );
 }
 
-.yugen-tracker-diff-table {
+.yugen-tracker-diff-table
+{
 	width: 100%;
 	border-collapse: collapse;
-	font-family: 'Signika', sans-serif;
+	font-family: var( --yugen-font-family );
 	font-size: 13px;
 }
 
-.yugen-tracker-diff-table th {
-	background: rgba( 0, 0, 0, 0.1 );
-	padding: 6px 8px;
+.yugen-tracker-diff-table th
+{
+	background: rgba( 255, 255, 255, 0.03 );
+	padding: 8px 12px;
 	text-align: left;
-	font-weight: bold;
-	border-bottom: 1px solid #7a7971;
+	font-weight: 700;
+	border-bottom: 1px solid var( --yugen-border-color );
+	color: var( --yugen-text-primary );
 }
 
-.yugen-tracker-diff-row {
-	border-bottom: 1px solid rgba( 0, 0, 0, 0.08 );
+.yugen-tracker-diff-row
+{
+	border-bottom: 1px solid var( --yugen-border-color );
+	transition: background 0.2s ease;
 }
 
-.yugen-tracker-diff-row:nth-child( even ) {
-	background: rgba( 0, 0, 0, 0.02 );
+.yugen-tracker-diff-row:nth-child( even )
+{
+	background: rgba( 255, 255, 255, 0.01 );
 }
 
-.yugen-tracker-diff-row:hover {
-	background: rgba( 0, 0, 0, 0.04 );
+.yugen-tracker-diff-row:hover
+{
+	background: rgba( 255, 255, 255, 0.02 );
 }
 
-.yugen-tracker-diff-label {
-	padding: 6px 8px;
+.yugen-tracker-diff-label
+{
+	padding: 8px 12px;
 	font-weight: 500;
+	color: var( --yugen-text-primary );
 	display: flex;
 	align-items: center;
-	gap: 6px;
+	gap: 8px;
 }
 
-.yugen-tracker-diff-badge {
+.yugen-tracker-diff-badge
+{
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	width: 16px;
 	height: 16px;
 	border-radius: 50%;
-	font-size: 12px;
-	font-weight: bold;
-	color: #fff;
+	font-size: 10px;
+	font-weight: 700;
+	color: #ffffff;
 }
 
-.yugen-tracker-diff-badge.added {
-	background: #2b7a3a;
+.yugen-tracker-diff-badge.added
+{
+	background: rgba( 16, 185, 129, 0.1 );
+	border: 1px solid rgba( 16, 185, 129, 0.2 );
+	color: #10b981;
 }
 
-.yugen-tracker-diff-badge.deleted {
-	background: #a63a2b;
+.yugen-tracker-diff-badge.deleted
+{
+	background: var( --yugen-danger-trans );
+	border: 1px solid var( --yugen-danger-border );
+	color: var( --yugen-danger );
 }
 
-.yugen-tracker-diff-val {
-	padding: 6px 8px;
+.yugen-tracker-diff-val
+{
+	padding: 8px 12px;
 	font-family: monospace;
 	font-size: 12px;
 }
 
-.yugen-tracker-diff-val.old {
-	color: #8c2a1e;
+.yugen-tracker-diff-val.old
+{
+	color: var( --yugen-danger );
 }
 
-.yugen-tracker-diff-val.new {
-	color: #1e5a2c;
+.yugen-tracker-diff-val.new
+{
+	color: #10b981;
 }
 
-.yugen-tracker-diff-btn {
-	padding: 4px 8px;
+.yugen-tracker-diff-btn
+{
+	padding: 6px 12px;
 	text-align: center;
-	width: 40px;
+	width: 44px;
 }
 
-.yugen-tracker-diff-btn button {
-	display: flex;
+.yugen-tracker-diff-btn button
+{
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 24px;
-	height: 24px;
-	padding: 0;
+	width: 26px;
+	height: 26px;
+	padding: 0 !important;
 }
 
-.yugen-tracker-no-diffs {
+.yugen-tracker-no-diffs
+{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 150px;
-	color: #666;
-	gap: 10px;
+	color: var( --yugen-text-muted );
+	gap: 12px;
 }
 
-.yugen-tracker-no-diffs i {
+.yugen-tracker-no-diffs i
+{
 	font-size: 28px;
-	color: #2b7a3a;
+	color: #10b981;
 }
 
-.yugen-tracker-no-diffs p {
+.yugen-tracker-no-diffs p
+{
 	margin: 0;
-	font-weight: bold;
+	font-weight: 700;
+	color: var( --yugen-text-primary );
 }

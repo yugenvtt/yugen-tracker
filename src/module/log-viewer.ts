@@ -56,14 +56,25 @@ export class LogViewer extends HandlebarsApplicationMixin( ApplicationV2 )
 		return this._instance;
 	}
 
+	/**
+	 * returns the localized window title.
+	 **/
+	override get title( ): string 
+	{
+		return ( game as any ).i18n.localize( 'yugen-tracker.log-viewer.title' );
+	}
+
 	static override DEFAULT_OPTIONS = 
 	{
 		id: 'yugen-tracker-log-viewer',
 		tag: 'form',
+		classes: [ 
+			'yugen-app', 
+			'app' 
+		],
 		window: 
 		{
 			title: 'yugen-tracker.log-viewer.title',
-			icon: 'fas fa-history',
 			resizable: true
 		},
 		position: 

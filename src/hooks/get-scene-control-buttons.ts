@@ -41,6 +41,6 @@ export const get_scene_control_buttons_hook = ( ) =>
 		};
 
 		/** register log viewer tool button via shared library control utility **/
-		( globalThis as any ).yugen_utils.register_control_tool( controls, 'notes', tool );
+		( globalThis as any ).yugen_utils.register_control_tool( controls, 'tokens', tool );
 	} );
 };
