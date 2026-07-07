@@ -15,9 +15,7 @@ With real-time tracking and ingame alerts, you can see if players are making mod
 
  This provides a reliable audit log for GMs against players you may suspect are tampering with their sheets without you knowing (adding/removing/changing spell slots, etc.).
 
-![equipping](.github/assets/equip.png)
-![spell prep](.github/assets/prepare.png)
-![spell slots](.github/assets/spellslots.png)
+![examples](.github/assets/examples.png)
 
 ## Settings
 
