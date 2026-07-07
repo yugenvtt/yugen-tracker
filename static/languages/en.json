@@ -60,6 +60,20 @@
 			"announce-all-players": {
 				"name": "Announce to All Players",
 				"hint": "If enabled, changes will be sent as public chat messages to everyone (overrides other role settings)."
+			},
+			"colors": {
+				"title": "Configure Colors",
+				"hint": "Set custom background and text colors for different types of log messages and players in the chat log.",
+				"log-colors-section": "Log Message Colors",
+				"log-update": "Actor Update Logs",
+				"log-item": "Item/Equipment Logs",
+				"log-snapshot": "Snapshot Logs",
+				"log-concentration": "Concentration Logs",
+				"log-resources": "Party Resource Logs",
+				"user-colors-section": "Player Chat Box Colors",
+				"user-colors-hint": "Assign custom background and text colors for specific users in the chat log.",
+				"reset": "Reset to Defaults",
+				"save": "Save Changes"
 			}
 		},
 		"chat": {

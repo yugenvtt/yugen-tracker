@@ -36,7 +36,7 @@ export class ItemHandler extends BaseHandler
 			user: user.name,
 			item: item.name,
 			owner: owner.name
-		} ) );
+		} ), 'item' );
 	}
 
 	/**
@@ -66,7 +66,7 @@ export class ItemHandler extends BaseHandler
 			user: user.name,
 			item: item.name,
 			owner: owner.name
-		} ) );
+		} ), 'item' );
 	}
 
 	/**
@@ -167,7 +167,7 @@ export class ItemHandler extends BaseHandler
 			action: action,
 			item: item.name,
 			owner: owner.name
-		} ) );
+		} ), 'item' );
 	}
 
 	private static announce_complex_update( item: any, owner: any, user_name: string, changes: Record<string, any> ): void 
@@ -196,6 +196,6 @@ export class ItemHandler extends BaseHandler
 			} );
 		}
 
-		ChatManager.send_to_chat( message );
+		ChatManager.send_to_chat( message, 'item' );
 	}
 }

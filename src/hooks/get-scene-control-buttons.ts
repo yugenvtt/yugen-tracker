@@ -30,7 +30,7 @@ export const get_scene_control_buttons_hook = ( ) =>
 		{
 			name: 'yugen-tracker-logs',
 			title: ( game as any ).i18n.localize( 'yugen-tracker.log-viewer.title' ),
-			icon: 'fas fa-file-medical-alt',
+			icon: 'fa-solid fa-scroll',
 			onClick: ( ) =>
 			{
 				const viewer = LogViewer.instance;

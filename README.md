@@ -43,9 +43,15 @@ With real-time tracking and ingame alerts, you can see if players are making mod
 
 ![ui](.github/assets/ui.png)
 
-You can access the Log History UI by clicking the **Log History** icon (a file with a medical cross) in the following locations:
+You can access the Log History UI by clicking the **Log History** icon (a scroll) in the following locations:
 - **Journal Notes**: In the left-hand Scene Controls sidebar, under the Journal Notes group.
 - **Journal Directory**: In the header of the Journal sidebar tab.
+
+### Player and Log Message Color Configuration
+
+![colors](.github/assets/colors.png)
+
+You can customize the presentation of both sheet tracking logs and individual player messages in the chat log. GMs can access this configuration screen from the Module Settings menu to customize background and text colors. This allows tracking messages and different players to stand out clearly in the chat stream.
 
 ### Accessing via Macro
 If you have disabled the sidebar buttons or are using an older version of Foundry VTT where the buttons do not appear, you can open the UI using a macro:

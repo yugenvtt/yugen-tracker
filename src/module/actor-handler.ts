@@ -108,7 +108,7 @@ export class ActorHandler extends BaseHandler
 			} );
 		}
 
-		ChatManager.send_to_chat( message );
+		ChatManager.send_to_chat( message, 'update' );
 	}
 
 	private static resolve_display_key( key: string ): string 

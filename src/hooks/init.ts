@@ -9,9 +9,11 @@ import { item_hooks } from './item-hooks.js';
 import { active_effect_hooks } from './active-effect-hooks.js';
 import { socket_hooks } from './socket-hooks.js';
 import { render_chat_log_hook } from './render-chat-log.js';
+import { render_chat_message_hook } from './render-chat-message.js';
 import { get_scene_control_buttons_hook } from './get-scene-control-buttons.js';
 import { render_journal_directory_hook } from './render-journal-directory.js';
 import { get_actor_sheet_header_buttons_hook } from './get-actor-sheet-header-buttons.js';
+import { LogColorsConfig } from '../module/colors-config.js';
 
 export const init_hook = ( ) => 
 {
@@ -26,6 +28,7 @@ export const init_hook = ( ) =>
 		active_effect_hooks( );
 		socket_hooks( );
 		render_chat_log_hook( );
+		render_chat_message_hook( );
 		get_scene_control_buttons_hook( );
 		render_journal_directory_hook( );
 		get_actor_sheet_header_buttons_hook( );
@@ -36,6 +39,41 @@ export const init_hook = ( ) =>
 
 const register_settings = ( ) => 
 {
+	/** register settings menu for color configurations **/
+	( game as any ).settings.registerMenu( 'yugen-tracker', 'colors-menu', 
+	{
+		name: 'yugen-tracker.settings.colors.title',
+		label: 'yugen-tracker.settings.colors.title',
+		hint: 'yugen-tracker.settings.colors.hint',
+		icon: 'fas fa-palette',
+		type: LogColorsConfig,
+		restricted: true
+	} );
+
+	/** register settings for log colors storage **/
+	( game as any ).settings.register( 'yugen-tracker', 'log-colors', 
+	{
+		scope: 'world',
+		config: false,
+		type: Object,
+		default: {
+			update: { bg: '#eef6ff', text: '#1e3a8a' },
+			item: { bg: '#fef3c7', text: '#92400e' },
+			snapshot: { bg: '#f3e8ff', text: '#6b21a8' },
+			concentration: { bg: '#fee2e2', text: '#991b1b' },
+			resources: { bg: '#ecfdf5', text: '#065f46' }
+		}
+	} );
+
+	/** register settings for user chat box colors storage **/
+	( game as any ).settings.register( 'yugen-tracker', 'user-colors', 
+	{
+		scope: 'world',
+		config: false,
+		type: Object,
+		default: { }
+	} );
+
 	/** register settings for hiding gm changes **/
 	( game as any ).settings.register( 'yugen-tracker', 'hide-gm-changes', 
 	{

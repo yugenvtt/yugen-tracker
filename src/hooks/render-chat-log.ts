@@ -27,7 +27,7 @@ export const render_chat_log_hook = ( ) =>
 		const button = document.createElement( 'a' );
 		button.classList.add( 'yugen-tracker-log-button' );
 		button.title = ( game as any ).i18n.localize( 'yugen-tracker.log-viewer.title' );
-		button.innerHTML = '<i class="fas fa-file-medical-alt"></i>';
+		button.innerHTML = '<i class="fa-solid fa-scroll"></i>';
 		
 		button.addEventListener( 'click', ( ) => 
 		{

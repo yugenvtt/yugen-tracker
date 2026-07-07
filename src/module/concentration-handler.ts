@@ -80,6 +80,6 @@ export class ConcentrationHandler extends BaseHandler
 			} );
 		}
 
-		ChatManager.send_to_chat( message );
+		ChatManager.send_to_chat( message, 'concentration' );
 	}
 }

@@ -380,3 +380,9 @@
 	font-weight: 700;
 	color: var( --yugen-text-primary );
 }
+
+.yugen-colors-config .sheet-header .subtitle
+{
+	text-transform: none !important;
+}
+

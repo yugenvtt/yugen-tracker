@@ -12,7 +12,7 @@ export class ChatManager
 	/**
 	 * sends messages to chat, discord, and sockets.
 	 **/
-	public static send_to_chat( content: string ): void 
+	public static send_to_chat( content: string, log_type: string = 'update' ): void 
 	{
 		/** format for chat (with html) **/
 		const chat_content = content.replace( /\n/g, '<br/>' );
@@ -57,7 +57,14 @@ export class ChatManager
 		{
 			content: chat_content,
 			speaker: { alias: 'yugen-tracker' },
-			whisper: whisper
+			whisper: whisper,
+			flags: 
+			{
+				'yugen-tracker': 
+				{
+					'log-type': log_type
+				}
+			}
 		} );
 
 		this.trigger_secondary_outputs( content );
